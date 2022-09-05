@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="/assets/style.css" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale = 1.0" />
+    <title>Document</title>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.js"
+      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Agregamos el CDN para JQuery -->
+  </head>
+  <body>
+    <form action="/student" method="POST">
+      <lable for="fname">First Name:</lable>
+      <input type="text" id="fname" name="fname" /><br /><br />
+      <lable for="lname">Last Name:</lable>
+      <input type="text" id="lname" name="lname" /><br /><br />
+      <lable for="mname">Middle Name:</lable>
+      <input type="text" id="mname" name="mname" /><br /><br />
+      <input type="submit" value="Submit" />
+    </form>
+    <script>
+      $.ajax({
+        type: "POST",
+        url: "/personjson",
+        data: JSON.stringify({ firstName: "Juan", lastName: "Parra" }),
+        dataType: "json",
+        contentType: "application/json",
+      });
+    </script>
+
+    <!-- se usa ajax para hacer una petición asíncrona pero se debe configurar donde debemos poner como le va a responder (post) url donde se consulta, datos que responden, tipo de dato que está viajando -->
+  </body>
+</html>
+
+<!-- 
+  ●	El índex contendrá un formulario que se encontrará en la ruta student y se configura por POST
+  ●	El formulario contendrá dos etiquetas los cuales tendrá un id para poder encontrarlo a la hora de querer ejecutarlo 
+  ●	Y la ultima linea la cual tiene un boton submit la cual es un Postback para poder enviar la infromacion
+-->
